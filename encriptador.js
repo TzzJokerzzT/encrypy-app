@@ -44,7 +44,12 @@ const decryptText = () => {
   return textEncrypt;
 };
 
-const lastLetter = /[a-z]/;
+text.addEventListener("keypress", (e) => {
+  const charCode = e.which ? e.which : e.keyCode;
+  if (charCode >= 48 && charCode <= 57) {
+    e.preventDefault();
+  }
+});
 
 text.addEventListener("input", (e) => {
   e.target.value = text.value.toLowerCase();

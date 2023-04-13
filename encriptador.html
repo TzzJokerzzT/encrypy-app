@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./encriptador.css" />
+    <link rel="icon" href="/encrypted-data.png" />
+    <title>Encrypt/Decrypt App</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Text Encrypter/Decryptor</h1>
+    </header>
+    <article>
+      <div class="container">
+        <div class="input-group">
+          <label class="input-group__label" for="myInput">Decrypt</label>
+          <textarea class="input-group__input"
+          name="text"
+            id="text"
+            placeholder="Type or paste here..."></textarea>
+        </div>
+      </div>
+      <div class="input-container">
+        <button class="encrypt-button" id="encrypt">Encrypt</button>
+        <button class="decrypt-button" id="decrypt">Decrypt</button>
+      </div>
+      <div class="container">
+        <div class="input-group">
+          <label class="input-group__label" for="myInput">DECRYPT</label>
+          <textarea class="input-group__input"
+          name="output"
+          id="output"
+          placeholder="Results show here"></textarea>
+        </div>
+      <div class="input-container">
+        <button class="copy-button" id="copy">Copy Text</button>
+        <button class="clear-button" id="reset">Reset</button>
+      </div>
+    </article>
+    <script src="./encriptador.js"></script>
+  </body>
+</html>

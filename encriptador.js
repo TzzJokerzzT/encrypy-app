@@ -34,21 +34,16 @@ const encryptText = (text) => {
 //Function to decrypt the text
 
 const decryptText = () => {
-  const textEncrypt = text.value
-    .replaceAll(/enter/gi, "e")
-    .replaceAll(/imes/gi, "i")
-    .replaceAll(/ai/gi, "a")
-    .replaceAll(/ober/gi, "o")
-    .replaceAll(/ufat/gi, "u")
-    .toLowerCase();
-  return textEncrypt;
+  return Object.keys(letters)
+      .reduce(
+          (acc, el) => acc.replaceAll(letters[el], el),
+          text.value.toLowerCase()
+      )
 };
 
 text.addEventListener("keypress", (e) => {
-  const charCode = e.which ? e.which : e.keyCode;
-  if (charCode >= 48 && charCode <= 57) {
-    e.preventDefault();
-  }
+  const charCode = e.key;
+  if (/^-?\d+$/.test(charCode)) e.preventDefault();
 });
 
 text.addEventListener("input", (e) => {
@@ -59,20 +54,21 @@ output.disabled = true;
 
 encrypt.addEventListener("click", (e) => {
   e.preventDefault();
-  const encryptValue = encryptText(text.value);
-  output.value = encryptValue;
+  output.value = encryptText(text.value);
 });
 
 decrypt.addEventListener("click", (e) => {
   e.preventDefault();
-  const decryptValue = decryptText(text.value);
-  output.value = decryptValue;
+  output.value = decryptText(text.value);
 });
 
 copy.addEventListener("click", (test) => {
   test = output.innerHTML = output.value;
-  navigator.clipboard.writeText(test);
-  text.value = "";
+  // Async function
+  navigator.clipboard.writeText(test)
+      .then(() => {
+        text.value = "";
+      });
 });
 
 reset.addEventListener("click", () => {
